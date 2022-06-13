@@ -5,6 +5,8 @@
         public Group(string name)
         {
             Name = name;
+
+            Students = new List<Student>();
         }
 
         public string Name { get; set; }

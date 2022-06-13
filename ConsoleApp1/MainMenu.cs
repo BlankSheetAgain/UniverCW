@@ -39,7 +39,7 @@ namespace UniversityProject
                         {
                             Console.Clear();
 
-                            DepartmentsMenu.Display(university);
+                            GroupsMenu.Display(university);
                         }
                         break;
 
@@ -47,7 +47,7 @@ namespace UniversityProject
                         {
                             Console.Clear();
 
-                            DepartmentsMenu.Display(university);
+                            GroupsMenu.Display(university);
                         }
                         break;
 

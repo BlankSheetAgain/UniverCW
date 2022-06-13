@@ -10,134 +10,108 @@ namespace UniversityProject
     {
         public static void Display(University university)
         {
-            int choice;
+                if (university.Departments.Count == 0)
+                {
+                    Console.WriteLine("Кафедр ще не було додано");
+                }
 
-            do
-            {
-                Console.WriteLine("Оберіть потрібний пункт меню\n" +
-                    "1. Додати групу\n" +
-                    "2. Видалити групу\n" +
-                    "3. Відобразити всі групи\n" +
-                    "4. Повернутися у попереднє меню\n");
+                else
+                {
+                Console.WriteLine("Оберіть кафедру");
 
+                for (int i = 0; i < university.Departments.Count; i++)
+                {
+                    Console.WriteLine(i + " " + university.Departments[i].Name);
+                }
                 Console.Write(">");
 
-                choice = int.Parse(Console.ReadLine());
+                int depchoice = int.Parse(Console.ReadLine());
 
-                switch (choice)
+
+                if (university.Departments[depchoice] == null || university.Departments.Count < depchoice)
                 {
-                    case 1:
+
+                    Console.WriteLine("Такої кафедри не існує");
+                }
+
+                else
+                {
+
+
+                    int choice;
+
+                    do
+                    {
+                        Console.WriteLine("Оберіть потрібний пункт меню\n" +
+                            "1. Додати групу\n" +
+                            "2. Видалити групу\n" +
+                            "3. Відобразити всі групи\n" +
+                            "4. Повернутися у попереднє меню\n");
+
+                        Console.Write(">");
+
+                        choice = int.Parse(Console.ReadLine());
+
+                        switch (choice)
                         {
-                            Console.Clear();
-
-                            if (university.Departments.Count == 0)
-                            {
-                                Console.WriteLine("Кафедр ще не було додано");
-
-                            }
-                            else
-                            {
-                                Console.WriteLine("Оберіть кафедру");
-
-                                for (int i = 0; i < university.Departments.Count; i++)
-                                {
-                                    Console.WriteLine(i + " " + university.Departments[i].Name);
-                                }
-                                Console.Write(">");
-
-                                int choice2 = int.Parse(Console.ReadLine());
-
-                                if (university.Departments[choice2] == null || university.Departments.Count < choice2)
-                                {
-
-                                    Console.WriteLine("Такої кафедри не існує");
-
-                                }
-
-                                else
+                            case 1:
                                 {
                                     Console.WriteLine("Введіть назву групи");
 
                                     string name = Console.ReadLine();
 
-                                    university.Departments[choice2].Groups.Add(new Group(name));
-                                    
-                                }
+                                    university.Departments[depchoice].Groups.Add(new Group(name));
+                                }break;
 
-                                Console.WriteLine("Кафедру було успішно видалено");
-                            }
-
-                        }
-                        break;
-
-                    case 2:
-                        {
-                            Console.Clear();
-
-                            if (university.Departments.Count == 0)
-                            {
-                                Console.WriteLine("Кафедр ще не було додано");
-
-                            }
-                            else
-                            {
-                                for (int i = 0; i < university.Departments.Count; i++)
+                            case 2:
                                 {
-                                    Console.WriteLine(i + " " + university.Departments[i].Name);
-                                }
-                                Console.Write(">");
+                                    Console.Clear();
 
-                                int choice2 = int.Parse(Console.ReadLine());
+                                    if (university.Departments[depchoice].Groups.Count == 0)
+                                    {
+                                        Console.WriteLine("Груп на даній кафедрі ще не було додано");
+                                    }
 
-                                if (university.Departments[choice2] == null || university.Departments.Count < choice2)
+                                    else
+                                    {
+                                        for (int i = 0; i < university.Departments[depchoice].Groups.Count; i++)
+                                        {
+                                            Console.WriteLine(i + " " + university.Departments[depchoice].Groups[i].Name);
+                                        }
+                                        Console.Write(">");
+
+                                        int choice2 = int.Parse(Console.ReadLine());
+
+                                        if (university.Departments[depchoice].Groups[choice2] == null || university.Departments[depchoice].Groups.Count < choice2)
+                                        {
+
+                                            Console.WriteLine("Такої групи не існує");
+
+                                        }
+
+                                        university.Departments[depchoice].Groups.RemoveAt(choice2);
+
+                                        Console.WriteLine("групу було успішно видалено");
+                                    }
+                                } break;
+
+                            default:
                                 {
-
-                                    Console.WriteLine("Такої кафедри не існує");
-
-                                    return;
+                                    Console.WriteLine("Неправильний вибір, спробуйте ще раз");
                                 }
-
-                                university.Departments.RemoveAt(choice2);
-
-                                Console.WriteLine("Кафедру було успішно видалено");
-                            }
+                                break;
                         }
-                        break;
+                        Console.WriteLine("Для продовження натисніть будь яку клавішу");
 
-                    case 3:
-                        {
-                            Console.Clear();
+                        Console.ReadKey();
 
-                            foreach (var department in university.Departments)
-                            {
-                                Console.WriteLine(department.Name + "\n");
-                            }
-                        }
-                        break;
+                        Console.Clear();
 
-                    case 4:
-                        {
-                            Console.Clear();
+                        DepartmentsMenu.Display(university);
 
-                            MainMenu.Display(university);
-                        }
-                        break;
-
-                    default:
-                        {
-                            Console.WriteLine("Неправильний вибір, спробуйте ще раз");
-                        }
-                        break;
+                    } while (Console.ReadKey().Key != ConsoleKey.End);
                 }
-                Console.WriteLine("Для продовження натисніть будь яку клавішу");
-
-                Console.ReadKey();
-
-                Console.Clear();
-
-                DepartmentsMenu.Display(university);
-
-            } while (Console.ReadKey().Key != ConsoleKey.End);
-        }
+                }
+            }
     }
 }
