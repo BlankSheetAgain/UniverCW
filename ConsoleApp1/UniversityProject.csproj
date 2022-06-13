@@ -7,4 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="StudentsMenu.cs~RF24b7b37c.TMP" />
+  </ItemGroup>
+
 </Project>

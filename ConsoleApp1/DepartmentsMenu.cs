@@ -36,6 +36,8 @@ namespace UniversityProject
 
                             university.Departments.Add(new(name));
 
+                            university.Departments[0].Head = new HeadOfDepartment { Lastname = "Zola", Firstname = "Hola", Patronymic = "Yula", Birthday = new DateOnly(2022, 10, 10) };
+
                         }
                         break;
 
@@ -58,17 +60,20 @@ namespace UniversityProject
 
                                 int choice2 = int.Parse(Console.ReadLine());
 
-                                if (university.Departments[choice2] == null || university.Departments.Count < choice2)
+                                if (university.Departments.Count > choice2 && university.Departments[choice2] != null)
                                 {
+                                    university.Departments.RemoveAt(choice2);
 
-                                    Console.WriteLine("Такої кафедри не існує");
+                                    Console.WriteLine("Кафедру було успішно видалено");
 
-                                    return;
                                 }
 
-                                university.Departments.RemoveAt(choice2);
+                                else
+                                {
+                                    Console.WriteLine("Такої кафедри не існує");
+                                }
 
-                                Console.WriteLine("Кафедру було успішно видалено");
+                                
                             }
                         }
                         break;

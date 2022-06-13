@@ -18,7 +18,7 @@ namespace UniversityProject
                 if (university.Departments[i].Head == this)
                 {
 
-                    result += $"--{this.Lastname} {this.Firstname} {this.Patronymic}\n";
+                    result += $"-{this.Lastname} {this.Firstname} {this.Patronymic}\n";
                     
                     foreach (var groups in university.Departments[i].Groups)
                     {

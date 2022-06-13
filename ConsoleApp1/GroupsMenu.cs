@@ -28,13 +28,7 @@ namespace UniversityProject
                 int depchoice = int.Parse(Console.ReadLine());
 
 
-                if (university.Departments[depchoice] == null || university.Departments.Count < depchoice)
-                {
-
-                    Console.WriteLine("Такої кафедри не існує");
-                }
-
-                else
+                if (university.Departments.Count > depchoice && university.Departments[depchoice] != null)
                 {
 
 
@@ -95,6 +89,11 @@ namespace UniversityProject
                                     }
                                 } break;
 
+                            case 4:
+                                {
+                                    MainMenu.Display(university);
+                                }break;
+                                
                             default:
                                 {
                                     Console.WriteLine("Неправильний вибір, спробуйте ще раз");
@@ -107,11 +106,14 @@ namespace UniversityProject
 
                         Console.Clear();
 
-                        DepartmentsMenu.Display(university);
-
                     } while (Console.ReadKey().Key != ConsoleKey.End);
                 }
+                else
+                {
+
+                    Console.WriteLine("Такої кафедри не існує");
                 }
+            }
             }
     }
 }
