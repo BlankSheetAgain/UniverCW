@@ -134,24 +134,18 @@ namespace UniversityProject
 
                                 university.Departments[depchoice].Groups.RemoveAt(choice2);
 
-                                Console.WriteLine("групу було успішно видалено");
-                            }
-                        }
-                        break;
+                                                Console.WriteLine("групу було успішно видалено");
+                                            }
+                                        }
+                                        break;
 
-                    case 4:
-                        {
-                            MainMenu.Display(university);
-                        }
-                        break;
-
-                    default:
-                        {
-                            Console.WriteLine("Неправильний вибір, спробуйте ще раз");
-                        }
-                        break;
-                }
-                Console.WriteLine("Для продовження натисніть будь яку клавішу");
+                                    default:
+                                        {
+                                            Console.WriteLine("Неправильний вибір, спробуйте ще раз");
+                                        }
+                                        break;
+                                }
+                                Console.WriteLine("Для продовження натисніть будь яку клавішу");
 
                 Console.ReadKey();
 
