@@ -10,13 +10,13 @@ namespace UniversityProject
     {
         public static void Display(University university)
         {
-                if (university.Departments.Count == 0)
-                {
-                    Console.WriteLine("Кафедр ще не було додано");
-                }
+            if (university.Departments.Count == 0)
+            {
+                Console.WriteLine("Кафедр ще не було додано");
+            }
 
-                else
-                {
+            else
+            {
                 Console.WriteLine("Оберіть кафедру");
 
                 for (int i = 0; i < university.Departments.Count; i++)
@@ -32,7 +32,7 @@ namespace UniversityProject
                 {
 
                     DisplayMenu(university, depchoice);
-                   
+
                 }
                 else
                 {
@@ -40,7 +40,7 @@ namespace UniversityProject
                     Console.WriteLine("Такої кафедри не існує");
                 }
             }
-         }
+        }
 
         public static void DisplayMenu(University university, int depchoice)
         {
@@ -52,7 +52,7 @@ namespace UniversityProject
                     "1. Додати групу\n" +
                     "2. Видалити групу\n" +
                     "3. Відобразити всі групи\n" +
-                    "4. Повернутися у попереднє меню\n"+
+                    "4. Повернутися у попереднє меню\n" +
                     "5. Додати викладача\n" +
                     "6. Видалити викладача\n" +
                     "7. Вивести викладача\n"
@@ -128,7 +128,8 @@ namespace UniversityProject
                                     Console.WriteLine(group.Name);
                                 }
                             }
-                        }break;
+                        }
+                        break;
 
                     case 4:
                         {

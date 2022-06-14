@@ -152,7 +152,7 @@ namespace UniversityProject
                         }
                         break;
 
-                        case 3:
+                    case 3:
                         {
                             Console.Clear();
 

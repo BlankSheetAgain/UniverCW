@@ -13,24 +13,7 @@ namespace UniversityProject
             Departments = new List<Department>();
         }
 
-        //public string PrintDepartments()
-        //{
-        //    string result = String.Empty;
-        //    if (Departments.Count == 0)
-        //    {
-        //        Console.WriteLine("Кафедр ще не було додано");
-        //    }
 
-        //    else
-        //    {
-        //        Console.WriteLine("Оберіть кафедру");
-
-        //        for (int i = 0; i < Departments.Count; i++)
-        //        {
-        //            Console.WriteLine(i + " " + Departments[i].Name);
-        //        }
-        //    }
-        //}
 
         public List<Department> Departments { get; set; }
 
@@ -42,11 +25,11 @@ namespace UniversityProject
             {
 
                 result += department.Head.ToString();
-                
+
                 foreach (var group in department.Groups)
                 {
                     result += group.ToString();
-                    
+
                     foreach (var student in group.Students)
                     {
                         result += student.ToString();
@@ -57,7 +40,7 @@ namespace UniversityProject
             return result;
         }
 
-        public List<Person> SelectByLastname (string lastname)
+        public List<Person> SelectByLastname(string lastname)
         {
             List<Person> result = new List<Person>();
 
@@ -71,15 +54,15 @@ namespace UniversityProject
 
                 foreach (var group in department.Groups)
                 {
-                    
+
                     if (group.Teacher.Lastname == lastname)
                     {
                         result.Add(group.Teacher);
                     }
-                    
+
                     foreach (var student in group.Students)
                     {
-                        
+
                         if (student.Lastname == lastname)
                         {
                             result.Add(student);

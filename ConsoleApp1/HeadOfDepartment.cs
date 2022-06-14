@@ -19,7 +19,7 @@ namespace UniversityProject
                 {
 
                     result += $"-{this.Lastname} {this.Firstname} {this.Patronymic}\n";
-                    
+
                     foreach (var groups in university.Departments[i].Groups)
                     {
                         result += groups.Teacher.GetSubordinates(university) + "\n";

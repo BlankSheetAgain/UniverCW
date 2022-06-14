@@ -8,11 +8,11 @@ namespace UniversityProject
 {
     public class Program
     {
-        public static void Main ()
+        public static void Main()
         {
             Console.OutputEncoding = Encoding.UTF8;
 
-            University university = new University ();
+            University university = new University();
 
             MainMenu.Display(university);
         }

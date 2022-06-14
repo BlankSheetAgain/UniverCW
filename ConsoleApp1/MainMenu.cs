@@ -79,7 +79,7 @@ namespace UniversityProject
                             {
                                 Console.WriteLine("С таким прізвищем нікого не знайдено");
                             }
-                         
+
                         }
                         break;
 

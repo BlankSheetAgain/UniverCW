@@ -77,7 +77,7 @@ namespace UniversityProject
                                     Console.WriteLine("Такої кафедри не існує");
                                 }
 
-                                
+
                             }
                         }
                         break;
@@ -103,7 +103,7 @@ namespace UniversityProject
 
                     case 5:
                         {
-                            if (university.Departments[choice].Head is null)
+                            if (university.Departments[].Head == null)
                             {
                                 Console.WriteLine("ВВедіть прізвище завідуючого");
 
