@@ -18,7 +18,11 @@ namespace UniversityProject
                     "1. Додати кафедру\n" +
                     "2. Видалити кафедру\n" +
                     "3. Відобразити всі кафедри\n" +
-                    "4. Повернутися у попереднє меню\n");
+                    "4. Повернутися у попереднє меню\n" +
+                    "5. Додати завідуючого\n" +
+                    "6. Видалити завідуючого\n" +
+                    "7. Вивести завідуючого\n"
+                    );
 
                 Console.Write(">");
 
@@ -94,6 +98,66 @@ namespace UniversityProject
                             Console.Clear();
 
                             MainMenu.Display(university);
+                        }
+                        break;
+
+                    case 5:
+                        {
+                            if (university.Departments[choice].Head is null)
+                            {
+                                Console.WriteLine("ВВедіть прізвище завідуючого");
+
+                                string lastname = Console.ReadLine();
+
+                                Console.WriteLine("ВВедіть ім'я завідуючого");
+
+                                string firstname = Console.ReadLine();
+
+                                Console.WriteLine("ВВедіть по-батькові завідуючого");
+
+                                string patronymic = Console.ReadLine();
+
+                                Console.WriteLine("ВВедіть дату народження у форматі день/місяць/рік");
+
+                                DateOnly birthday = DateOnly.Parse(Console.ReadLine());
+
+                                university.Departments[choice].Head = new HeadOfDepartment { Lastname = lastname, Firstname = firstname, Patronymic = patronymic, Birthday = birthday };
+                            }
+
+                            else
+                            {
+                                Console.WriteLine("У цієї кафедри вже є завідуючий");
+                            }
+                        }
+                        break;
+
+                    case 6:
+                        {
+                            if (university.Departments[choice].Head is null)
+                            {
+                                Console.WriteLine("У цієї кафедри немає завідуючого");
+                            }
+
+                            else
+                            {
+                                university.Departments[choice].Head = null;
+
+                                Console.WriteLine("Завідуючого успішно видалено");
+                            }
+                        }
+                        break;
+
+                    case 7:
+                        {
+                            if (university.Departments[choice].Head is null)
+                            {
+                                Console.WriteLine("У цієї кафедри немає завідуючого");
+                            }
+
+                            else
+                            {
+                                Console.WriteLine(university.Departments[choice].Head.Lastname);
+                            }
                         }
                         break;
 

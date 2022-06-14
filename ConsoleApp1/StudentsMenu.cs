@@ -78,7 +78,7 @@ namespace UniversityProject
             }
         }
 
-        public static void DisplayMenu (University university, int depchoice, int groupchoice)
+        public static void DisplayMenu(University university, int depchoice, int groupchoice)
         {
             int choice;
 
@@ -98,11 +98,23 @@ namespace UniversityProject
                 {
                     case 1:
                         {
-                            Console.WriteLine("Введіть дані студентів");
+                            Console.WriteLine("ВВедіть прізвище студента");
 
+                            string lastname = Console.ReadLine();
 
+                            Console.WriteLine("ВВедіть ім'я студента");
 
-                            university.Departments[depchoice].Groups[groupchoice].Students.Add(new Student { Firstname = "Marko", Lastname = "Polo", Patronymic = "Paul", Birthday = new DateOnly(2022, 10, 12) });
+                            string firstname = Console.ReadLine();
+
+                            Console.WriteLine("ВВедіть по-батькові студента");
+
+                            string patronymic = Console.ReadLine();
+
+                            Console.WriteLine("ВВедіть дату народження у форматі день/місяць/рік");
+
+                            DateOnly birthday = DateOnly.Parse(Console.ReadLine());
+
+                            university.Departments[depchoice].Groups[groupchoice].Students.Add(new Student { Lastname = lastname, Firstname = firstname, Patronymic = patronymic, Birthday = birthday });
                         }
                         break;
 
@@ -110,38 +122,52 @@ namespace UniversityProject
                         {
                             Console.Clear();
 
-                            if (university.Departments[depchoice].Groups.Count == 0)
+                            if (university.Departments[depchoice].Groups[groupchoice].Students.Count == 0)
                             {
-                                Console.WriteLine("Груп на даній кафедрі ще не було додано");
+                                Console.WriteLine("Студентів в даній групі ще не було додано");
                             }
 
                             else
                             {
-                                for (int i = 0; i < university.Departments[depchoice].Groups.Count; i++)
+                                for (int i = 0; i < university.Departments[depchoice].Groups[groupchoice].Students.Count; i++)
                                 {
-                                    Console.WriteLine(i + " " + university.Departments[depchoice].Groups[i].Name);
+                                    Console.WriteLine(i + " " + university.Departments[depchoice].Groups[groupchoice].Students[i].Lastname);
                                 }
                                 Console.Write(">");
 
                                 int choice2 = int.Parse(Console.ReadLine());
 
-                                if (university.Departments[depchoice].Groups[choice2] == null || university.Departments[depchoice].Groups.Count < choice2)
+                                if (university.Departments[depchoice].Groups[groupchoice].Students.Count > choice2 && university.Departments[depchoice].Groups[groupchoice].Students[choice2] != null)
                                 {
+                                    university.Departments[depchoice].Groups[groupchoice].Students.RemoveAt(choice2);
 
-                                    Console.WriteLine("Такої групи не існує");
-
+                                    Console.WriteLine("Студента було успішно видалено");
                                 }
-
-                                university.Departments[depchoice].Groups.RemoveAt(choice2);
-
-                                Console.WriteLine("групу було успішно видалено");
+                                else
+                                {
+                                    Console.WriteLine("Такого студента не знайдено");
+                                }
+;
                             }
                         }
                         break;
 
-                    case 4:
+                        case 3:
                         {
-                            MainMenu.Display(university);
+                            Console.Clear();
+
+                            if (university.Departments[depchoice].Groups[groupchoice].Students.Count == 0)
+                            {
+                                Console.WriteLine("Cтудентів у цій групі ще не було додано");
+                            }
+
+                            else
+                            {
+                                foreach (var student in university.Departments[depchoice].Groups[groupchoice].Students)
+                                {
+                                    Console.WriteLine(student.Lastname);
+                                }
+                            }
                         }
                         break;
 
@@ -161,5 +187,5 @@ namespace UniversityProject
 
             } while (Console.ReadKey().Key != ConsoleKey.End);
         }
-        }
     }
+}

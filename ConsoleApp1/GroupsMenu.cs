@@ -52,7 +52,11 @@ namespace UniversityProject
                     "1. Додати групу\n" +
                     "2. Видалити групу\n" +
                     "3. Відобразити всі групи\n" +
-                    "4. Повернутися у попереднє меню\n");
+                    "4. Повернутися у попереднє меню\n"+
+                    "5. Додати викладача\n" +
+                    "6. Видалити викладача\n" +
+                    "7. Вивести викладача\n"
+                    );
 
                 Console.Write(">");
 
@@ -108,9 +112,87 @@ namespace UniversityProject
                         }
                         break;
 
+                    case 3:
+                        {
+                            Console.Clear();
+
+                            if (university.Departments[depchoice].Groups.Count == 0)
+                            {
+                                Console.WriteLine("Груп на даній кафедрі ще не було додано");
+                            }
+
+                            else
+                            {
+                                foreach (var group in university.Departments[depchoice].Groups)
+                                {
+                                    Console.WriteLine(group.Name);
+                                }
+                            }
+                        }break;
+
                     case 4:
                         {
                             MainMenu.Display(university);
+                        }
+                        break;
+
+                    case 5:
+                        {
+                            if (university.Departments[depchoice].Groups[choice].Teacher is null)
+                            {
+                                Console.WriteLine("ВВедіть прізвище викладача");
+
+                                string lastname = Console.ReadLine();
+
+                                Console.WriteLine("ВВедіть ім'я викладача");
+
+                                string firstname = Console.ReadLine();
+
+                                Console.WriteLine("ВВедіть по-батькові викладача");
+
+                                string patronymic = Console.ReadLine();
+
+                                Console.WriteLine("ВВедіть дату народження у форматі день/місяць/рік");
+
+                                DateOnly birthday = DateOnly.Parse(Console.ReadLine());
+
+                                university.Departments[depchoice].Groups[choice].Teacher = new Teacher { Lastname = lastname, Firstname = firstname, Patronymic = patronymic, Birthday = birthday };
+                            }
+
+                            else
+                            {
+                                Console.WriteLine("У цієї групи вже є викладач");
+                            }
+                        }
+                        break;
+
+                    case 6:
+                        {
+                            if (university.Departments[depchoice].Groups[choice].Teacher is null)
+                            {
+                                Console.WriteLine("У цієї групи немає викладача");
+                            }
+
+                            else
+                            {
+                                university.Departments[depchoice].Groups[choice].Teacher = null;
+
+                                Console.WriteLine("Викладача успішно видалено");
+                            }
+                        }
+                        break;
+
+                    case 7:
+                        {
+                            if (university.Departments[depchoice].Groups[choice].Teacher is null)
+                            {
+                                Console.WriteLine("У цієї групи немає викладача");
+                            }
+
+                            else
+                            {
+                                Console.WriteLine(university.Departments[depchoice].Groups[choice].Teacher.Lastname);
+                            }
                         }
                         break;
 
