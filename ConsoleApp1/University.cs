@@ -13,6 +13,25 @@ namespace UniversityProject
             Departments = new List<Department>();
         }
 
+        //public string PrintDepartments()
+        //{
+        //    string result = String.Empty;
+        //    if (Departments.Count == 0)
+        //    {
+        //        Console.WriteLine("Кафедр ще не було додано");
+        //    }
+
+        //    else
+        //    {
+        //        Console.WriteLine("Оберіть кафедру");
+
+        //        for (int i = 0; i < Departments.Count; i++)
+        //        {
+        //            Console.WriteLine(i + " " + Departments[i].Name);
+        //        }
+        //    }
+        //}
+
         public List<Department> Departments { get; set; }
 
         public override string ToString()

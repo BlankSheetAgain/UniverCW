@@ -10,6 +10,8 @@ namespace UniversityProject
     {
         public static void Main ()
         {
+            Console.OutputEncoding = Encoding.UTF8;
+
             University university = new University ();
 
             MainMenu.Display(university);
