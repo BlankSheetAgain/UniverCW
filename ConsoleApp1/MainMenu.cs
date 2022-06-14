@@ -47,7 +47,7 @@ namespace UniversityProject
                         {
                             Console.Clear();
 
-                            GroupsMenu.Display(university);
+                            StudentsMenu.Display(university);
                         }
                         break;
 
